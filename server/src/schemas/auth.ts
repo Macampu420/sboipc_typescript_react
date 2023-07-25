@@ -23,7 +23,7 @@ export const schemaUsuario = z.object({
     .includes('sena', { message: 'El correo debe pertenecer al sena' }), // El usuario debe ser una cadena de texto con formato de correo electrónico y debe incluir la palabra "sena"
 
   contrasena: z.string(errorBasicoTipoDato('contraseña', 'texto'))
-    .min(6), // La contraseña debe ser una cadena de texto con un mínimo de 6 caracteres
+    .min(6, { message: 'La contraseña debe tener minimo 6 caracteres' }), // La contraseña debe ser una cadena de texto con un mínimo de 6 caracteres
 
   idTipoGrafico: z.number(), // El idTipoGrafico debe ser un número
   idRol: z.number() // El idRol debe ser un número

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2023 at 07:19 PM
+-- Generation Time: Jul 25, 2023 at 06:46 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -20,6 +20,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `sboipc`
 --
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_registro_usuario` (IN `documentoUsuario` INT, IN `nombresUsuario` VARCHAR(255), IN `apellidosUsuario` VARCHAR(255), IN `usuario` VARCHAR(255), IN `contrasena` VARCHAR(255), IN `idTipoGrafico` INT, IN `idRol` INT)   BEGIN
+    INSERT INTO `tbl_usuarios` (
+        `documentoUsuario`,
+        `nombresUsuario`,
+        `apellidosUsuario`,
+        `usuario`,
+        `contrasena`,
+        `idTipoGrafico`,
+        `idRol`
+    )
+    VALUES (
+        documentoUsuario,
+        nombresUsuario,
+        apellidosUsuario,
+        usuario,
+        contrasena,
+        idTipoGrafico,
+        idRol
+    );
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -170,6 +197,16 @@ CREATE TABLE `tbl_roles` (
   `tipoRoll` enum('super usuario','usuario','usuario consulta','deshabilitado') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tbl_roles`
+--
+
+INSERT INTO `tbl_roles` (`idRol`, `tipoRoll`) VALUES
+(1, 'super usuario'),
+(2, 'usuario'),
+(3, 'usuario consulta'),
+(4, 'deshabilitado');
+
 -- --------------------------------------------------------
 
 --
@@ -219,6 +256,15 @@ CREATE TABLE `tbl_tipos_grafico` (
   `tipoGrafico` enum('barras','lineas','pastel') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tbl_tipos_grafico`
+--
+
+INSERT INTO `tbl_tipos_grafico` (`idTipoGrafico`, `tipoGrafico`) VALUES
+(1, 'barras'),
+(2, 'lineas'),
+(3, 'pastel');
+
 -- --------------------------------------------------------
 
 --
@@ -248,6 +294,14 @@ CREATE TABLE `tbl_usuarios` (
   `idTipoGrafico` int(11) DEFAULT NULL,
   `idRol` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_usuarios`
+--
+
+INSERT INTO `tbl_usuarios` (`idUsuario`, `documentoUsuario`, `nombresUsuario`, `apellidosUsuario`, `usuario`, `contrasena`, `idTipoGrafico`, `idRol`) VALUES
+(1, 1019983878, 'Miguel Angel', 'Campuzano Blandon', 'macampuzano67@soy.sena.edu', 'macampu420', 1, 1),
+(4, 1019983876, 'Miguel Angel', 'Campuzano Blandon', 'macampuzano67@soy.sena.edu.bo', 'macampu420', 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -374,7 +428,8 @@ ALTER TABLE `tbl_trazabilidad_tareas`
 --
 ALTER TABLE `tbl_usuarios`
   ADD PRIMARY KEY (`idUsuario`),
-  ADD UNIQUE KEY `documentoUsuario` (`documentoUsuario`,`usuario`),
+  ADD UNIQUE KEY `documentoUsuario` (`documentoUsuario`),
+  ADD UNIQUE KEY `usuario` (`usuario`),
   ADD KEY `tipo_grafico_usuario` (`idTipoGrafico`),
   ADD KEY `rol_usuario` (`idRol`);
 
@@ -446,7 +501,7 @@ ALTER TABLE `tbl_procesos`
 -- AUTO_INCREMENT for table `tbl_roles`
 --
 ALTER TABLE `tbl_roles`
-  MODIFY `idRol` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idRol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_supervisores`
@@ -470,7 +525,7 @@ ALTER TABLE `tbl_tareas_proceso`
 -- AUTO_INCREMENT for table `tbl_tipos_grafico`
 --
 ALTER TABLE `tbl_tipos_grafico`
-  MODIFY `idTipoGrafico` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idTipoGrafico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_trazabilidad_tareas`
@@ -482,7 +537,7 @@ ALTER TABLE `tbl_trazabilidad_tareas`
 -- AUTO_INCREMENT for table `tbl_usuarios`
 --
 ALTER TABLE `tbl_usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
