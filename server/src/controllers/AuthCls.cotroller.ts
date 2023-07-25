@@ -1,7 +1,8 @@
 import { Request, Response } from 'express'
-
+import { RegistroUsuario } from '../types/userTypes'
 export default class Auth {
   register (req: Request, res:Response) {
-    res.json({ hola: 'k mas' })
+    const usuario: RegistroUsuario = req.body
+    return res.json(usuario)
   }
 }
