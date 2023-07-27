@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import LoginPage from './pages/Login.jsx'
+import LoginPage from './pages/login'
 import './pages/login.css'
 
 export const router = createBrowserRouter([

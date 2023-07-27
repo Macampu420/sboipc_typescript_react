@@ -4,3 +4,26 @@ body {
   box-sizing: border-box;
 }
 
+.questrial{
+  font-family: 'Questrial', sans-serif;
+  color: #fff;
+}
+
+.quicksand{
+  font-family: 'Quicksand', sans-serif;
+  color: #fff;
+}
+
+.btn{
+  width: 80px;
+  height: 40px;
+  font-size: 15;
+  font-family: 'Quicksand', sans-serif;
+  box-shadow: 3px 10px 12px 4px rgba(0,0,0,0.16);
+  color: #fff;
+  border:none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+ 
