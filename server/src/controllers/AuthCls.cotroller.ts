@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { RegistroUsuario } from '../types/userTypes'
+import { Usuario } from '../types/userTypes'
 import { QueryError } from 'mysql2'
 
 import pool from '../conexion'
@@ -14,7 +14,7 @@ export default class Auth {
   }
 
   register = async (req: Request, res:Response) => {
-    const usuario: RegistroUsuario = req.body
+    const usuario: Usuario = req.body
 
     usuario.nombres = this.#convertirACamelCase(usuario.nombres)
     usuario.apellidos = this.#convertirACamelCase(usuario.apellidos)

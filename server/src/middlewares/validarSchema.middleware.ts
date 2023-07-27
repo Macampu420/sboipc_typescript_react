@@ -9,7 +9,7 @@ export const validarSchema = (schema:AnyZodObject, req:Request, res:Response, ne
     console.log(error)
 
     if (error instanceof ZodError) {
-      return res.json(error.issues.map(issue => ({
+      return res.status(401).json(error.issues.map(issue => ({
         path: issue.path,
         message: issue.message
       })))

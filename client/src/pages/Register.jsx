@@ -2,33 +2,58 @@ import './register.css'
 import HeaderModal from '../components/HeaderModal'
 import SelectModales from '../components/SelectRoles'
 import Boton from '../components/Boton'
+import { urlServer } from '../consts'
 
 export default function RegistroUsuarioModal () {
+  async function handleSubmit (e) {
+    // Prevent the browser from reloading the page
+    e.preventDefault()
+
+    const form = e.target
+    const formData = new FormData(form)
+
+    const formJson = JSON.stringify(Object.fromEntries(formData.entries()))
+
+    const respuestaRegistro = await fetch(`${urlServer}/api/auth/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: formJson
+    })
+
+    console.log(respuestaRegistro)
+  }
+
   return (
     <main>
       <article className="register-form bg-principal">
         <HeaderModal tituloModal={'Registro de usuario'} />
 
-        <form id="register-form" className='register-form-inputs-cont'>
+        <form
+          id="register-form"
+          className='register-form-inputs-cont'
+          onSubmit={handleSubmit}
+        >
 
           <div className="inpContainer">
             <label htmlFor="inpDocumento" className='quicksand'>Documento</label>
-            <input id="inpDocumento" className="questrial" type="text" placeholder='Ingreso de documento' required/>
+            <input id="inpDocumento" name='documento' className="questrial" type="text" placeholder='Ingreso de documento' required/>
           </div>
 
           <div className="inpContainer">
             <label htmlFor="inpNombres" className='quicksand'>Nombres</label>
-            <input id="inpNombres" className="questrial" type="text" placeholder='Ingreso de nombres' required/>
+            <input id="inpNombres" name='nombres' className="questrial" type="text" placeholder='Ingreso de nombres' required/>
           </div>
 
           <div className="inpContainer">
             <label htmlFor="inpApellidos" className='quicksand'>Apellidos</label>
-            <input id="inpApellidos" className="questrial" type="text" placeholder='Ingreso de apellidos' required/>
+            <input id="inpApellidos" name='apellidos' className="questrial" type="text" placeholder='Ingreso de apellidos' required/>
           </div>
 
           <div className="inpContainer">
             <label htmlFor="inpUsuario" className='quicksand'>Usuario</label>
-            <input id="inpUsuario" className="questrial" type="text" placeholder='Ingreso de email' required/>
+            <input id="inpUsuario" name='usuario' className="questrial" type="text" placeholder='Ingreso de email' required/>
           </div>
 
           <SelectModales modalRegistro />
