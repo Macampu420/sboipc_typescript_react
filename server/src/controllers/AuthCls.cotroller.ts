@@ -8,7 +8,7 @@ export default class Auth {
     return texto.split(' ').map(palabra => palabra[0].toUpperCase() + palabra.slice(1).toLowerCase()).join(' ')
   }
 
-  #generarContrasena = ({ nombres, apellidos, documento }: {nombres:string, apellidos:string, documento: string}) => {
+  #generarContrasena = ({ nombres, apellidos, documento }: {nombres:string, apellidos:string, documento: number}) => {
     const contrasena: string = nombres.slice(0, 2) + apellidos.slice(0, 2).toLowerCase() + documento
     return contrasena
   }
@@ -24,7 +24,7 @@ export default class Auth {
       await pool.query('CALL sp_registro_usuario(?, ?, ?, ?, ?, ?, ?)',
         [usuario.documento, usuario.nombres, usuario.apellidos, usuario.usuario, usuario.contrasena,
           1, usuario.idRol])
-      return res.json(usuario)
+      return res.status(200).json(usuario)
     } catch (error) {
       if ((error as QueryError).errno === 1062) {
         console.log((error as QueryError))

@@ -9,8 +9,8 @@ const errorBasicoTipoDato = (nombreCampo:string, tipoDato:string) => {
 
 // Esquema para representar los datos de un usuario completo
 export const schemaUsuario = z.object({
-  documento: z.string(errorBasicoTipoDato('documento', 'numero'))
-    .min(7, { message: 'El documento debe tener mínimo 7 dígitos' }),
+  documento: z.number(errorBasicoTipoDato('documento', 'numero'))
+    .min(10 * 10 * 10, { message: 'El documento debe tener mínimo 7 dígitos' }),
 
   nombres: z.string(errorBasicoTipoDato('nombres', 'texto'))
     .min(3),

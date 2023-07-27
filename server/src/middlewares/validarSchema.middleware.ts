@@ -3,6 +3,7 @@ import { AnyZodObject, ZodError } from 'zod'
 
 export const validarSchema = (schema:AnyZodObject, req:Request, res:Response, next:NextFunction) => {
   try {
+    if (req.body.documento) req.body.documento = parseInt(req.body.documento)
     schema.parse(req.body)
     next()
   } catch (error) {
