@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react'
+import HeaderModal from '../components/HeaderModal'
+import SelectModales from '../components/SelectRoles'
+import Boton from '../components/Boton'
 
 export default function LoginPage () {
   useEffect(() => {
@@ -7,11 +10,8 @@ export default function LoginPage () {
 
   return (
     <main className="login-form-container">
-      <article className="login-form">
-        <header className="">
-          <h1 className="login-form-title questrial">Inicio de sesión</h1>
-          <img src="./../../public/images/senaBlanco.png" alt="" />
-        </header>
+      <article className="login-form bg-principal">
+        <HeaderModal tituloModal={'Inicio de sesión'}/>
 
         <section className='login-form-inputs-cont'>
 
@@ -25,17 +25,11 @@ export default function LoginPage () {
             <input id="inpContrasena" className="questrial" type="text" placeholder='Ingresa tu contraseña'/>
           </div>
 
-          <div className="inpContainer">
-            <label htmlFor="inpContrasena" className='quicksand'>Rol</label>
-            <select className='questrial' name="" id="">
-              <option selected disabled>Selecciona el rol</option>
-              <option value="">super usuario</option>
-              <option value="">usuario</option>
-              <option value="">usuario consulta</option>
-            </select>
-          </div>
+          <SelectModales />
 
-          <button type='submit' className='btn sombra-btn login-form-submit-btn'>Enviar</button>
+          <Boton estilo={'btn-verde'}>
+            Enviar
+          </Boton>
 
         </section>
       </article>

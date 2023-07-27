@@ -5,7 +5,6 @@ main{
 .login-form{
   width: 500px;
   height: 500px;
-  background-color: #70B22D;
   text-align: center;
   border-radius: 20px;
   box-shadow: 15px 15px 10px 0px rgba(0,0,0,0.16);
@@ -13,18 +12,6 @@ main{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-.login-form img{
-  width: 50px;
-  height: 50px;
-}
-
-.login-form header{
-  width: 75%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 30px
 }
 
 .login-form-container{
@@ -71,9 +58,4 @@ main{
   flex-direction: column;
   justify-content: center;
   overflow: fit;
-}
-
-.login-form-submit-btn{
-  background-color: #95C763;
-  padding: 5px;
 }

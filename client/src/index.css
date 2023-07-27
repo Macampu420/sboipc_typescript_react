@@ -17,6 +17,7 @@ body {
 .btn{
   width: 80px;
   height: 40px;
+  padding: 5px;
   font-size: 15;
   font-family: 'Quicksand', sans-serif;
   box-shadow: 3px 10px 12px 4px rgba(0,0,0,0.16);
@@ -24,6 +25,20 @@ body {
   border:none;
   border-radius: 5px;
   cursor: pointer;
+  display: inline;
+}
+
+.bg-principal{
+  background-color: #70B22D;
+}
+
+
+.btn-verde{
+  background-color: #95C763;
+}
+
+.btn-rojo{
+  background-color: #707070;
 }
 
  

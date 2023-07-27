@@ -1,0 +1,79 @@
+main{
+  background: #2b2b2b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.register-form{
+  width: 600px;
+  height: 500px;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 15px 15px 10px 0px rgba(0,0,0,0.16);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.register-form-title{
+  font-weight: 1px !important;
+  font-size: 30px;
+}
+
+.register-form-inputs-cont{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-auto-rows: auto;
+  gap: 10px;
+  width: 100%;
+  padding: 30px;
+  padding-top: 0;
+  box-sizing: border-box;
+}
+
+.register-form-inputs-cont label{
+  font-size: 20px;
+  text-align: start;
+  padding: 0;
+  margin: 0;
+}
+
+.register-form-inputs-cont input, .register-form-inputs-cont select{
+  color: #707070;
+  padding: 10px;
+  margin-bottom: 20px; 
+  border: solid #707070 1px;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.inpContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+
+.register-form-submit-btn{
+  background-color: #95C763;
+  padding: 5px;
+}
+
+.slc-rol-register{
+  grid-column: span 2;
+}
+
+.slc-rol-register select, .slc-rol-register label{
+  width: 50%;
+  display: inline-block;
+  margin: auto;
+}
+
+.register-form footer{
+  display: flex;
+  gap: 30px
+}
