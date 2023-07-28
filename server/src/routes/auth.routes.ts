@@ -8,8 +8,6 @@ const objAuth = new Auth()
 
 router.post('/register',
   (req:Request, res:Response, next:NextFunction) => {
-    console.log(req.body)
-
     validarSchema(schemaRegistroUsuario, req, res, next)
   },
   objAuth.register

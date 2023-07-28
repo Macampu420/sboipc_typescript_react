@@ -1,15 +1,23 @@
 // Importar las dependencias requeridas
 import express from 'express'
-import helmet from 'helmet' // Helmet ayuda a asegurar la aplicación configurando encabezados HTTP adecuados
-import morgan from 'morgan' // Morgan es un middleware para registrar solicitudes HTTP en la consola
+import helmet from 'helmet'
+import morgan from 'morgan'
 import cors from 'cors'
+import * as dotenv from 'dotenv'
+import path from 'path'
 
 // Importar las rutas de la aplicacion
 import AuthRouter from './routes/auth.routes'
 
+// configuracion de origenes permitidos para solicitudes al server (app cliente)
 const corsOptions = {
   origin: 'http://localhost:5173'
 }
+
+// configuracion de las variables de entorno
+dotenv.config({
+  path: path.join(__dirname, './.env')
+})
 
 const app = express() // Crear una instancia de la aplicación Express
 const port = 3000 || process.env.port // Definir el puerto en el que se ejecutará la aplicación, por defecto 3000 o el valor proporcionado en la variable de entorno 'port'
