@@ -2,37 +2,10 @@ import './register.css'
 import HeaderModal from '../components/HeaderModal'
 import SelectModales from '../components/SelectRoles'
 import Boton from '../components/Boton'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
 import { urlServer } from '../consts'
-
-const MySwal = withReactContent(Swal)
+import { alertaResultado } from '../utils'
 
 export default function RegistroUsuarioModal () {
-  async function alertaResultado (respuestaRegistro) {
-    if (respuestaRegistro.status === 200) {
-      MySwal.fire({
-        title: (
-          <strong className="questrial" style={{ color: '#000' }}>
-             El usuario ha sido registrado!
-          </strong>
-        ),
-        icon: 'success'
-      })
-    } else {
-      const respuestaJson = await respuestaRegistro.json()
-
-      MySwal.fire({
-        title: (
-          <strong className="questrial" style={{ color: '#000' }}>
-            {respuestaJson.mensaje || respuestaJson[0].message}
-          </strong>
-        ),
-        icon: 'error'
-      })
-    }
-  }
-
   async function handleSubmit (e) {
     // Prevent the browser from reloading the page
     e.preventDefault()
@@ -50,7 +23,10 @@ export default function RegistroUsuarioModal () {
       body: formJson
     })
 
-    await alertaResultado(respuestaRegistro)
+    await alertaResultado({
+      respuesta: respuestaRegistro,
+      mensajeExito: '¡El usuario ha sido registrado!'
+    })
   }
 
   return (

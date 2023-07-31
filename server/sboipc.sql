@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2023 at 06:46 PM
+-- Generation Time: Jul 28, 2023 at 04:46 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -44,6 +44,15 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_registro_usuario` (IN `documento
         idTipoGrafico,
         idRol
     );
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_verificar_usuario` (IN `_usuario` VARCHAR(256), IN `_idRol` INT(11))   BEGIN
+    SELECT
+        *
+    FROM
+        tbl_usuarios
+    WHERE
+        usuario = _usuario AND idRol = _idRol;
 END$$
 
 DELIMITER ;
@@ -300,8 +309,7 @@ CREATE TABLE `tbl_usuarios` (
 --
 
 INSERT INTO `tbl_usuarios` (`idUsuario`, `documentoUsuario`, `nombresUsuario`, `apellidosUsuario`, `usuario`, `contrasena`, `idTipoGrafico`, `idRol`) VALUES
-(1, 1019983878, 'Miguel Angel', 'Campuzano Blandon', 'macampuzano67@soy.sena.edu', 'macampu420', 1, 1),
-(4, 1019983876, 'Miguel Angel', 'Campuzano Blandon', 'macampuzano67@soy.sena.edu.bo', 'macampu420', 1, 1);
+(1, 1019983876, 'Miguel Angel', 'Campuzano Blandón', 'macampuzano67@soy.sena.edu.co', '$2a$10$Wc3fTAh/CCU505qbkbsEK.3gc/jkccYytArCDYVrFFUDQvmQlMgbq', 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -537,7 +545,7 @@ ALTER TABLE `tbl_trazabilidad_tareas`
 -- AUTO_INCREMENT for table `tbl_usuarios`
 --
 ALTER TABLE `tbl_usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

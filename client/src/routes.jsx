@@ -1,7 +1,8 @@
-import { createBrowserRouter } from 'react-router-dom'
-import LoginPage from './pages/login'
 import './pages/login.css'
+import { createBrowserRouter } from 'react-router-dom'
+import LoginPage from './pages/Login'
 import RegistroUsuarioModal from './pages/Register'
+import ContratosPage from './pages/Contratos'
 
 export const router = createBrowserRouter([
   {
@@ -11,5 +12,9 @@ export const router = createBrowserRouter([
   {
     path: 'usuarios/registro',
     element: <RegistroUsuarioModal />
+  },
+  {
+    path: '/contratos',
+    element: <ContratosPage />
   }
 ])

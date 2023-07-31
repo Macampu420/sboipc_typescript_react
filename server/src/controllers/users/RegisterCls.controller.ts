@@ -1,11 +1,11 @@
 import { Request, Response } from 'express'
-import { Usuario } from '../types/userTypes'
+import { Usuario } from '../../types/users/userTypes'
 import { QueryError } from 'mysql2'
 import nodemailer from 'nodemailer'
 import bcrypt from 'bcryptjs'
-import pool from '../conexion'
+import pool from '../../conexion'
 
-export default class Auth {
+export default class Register {
   #convertirACamelCase = (texto: string): string => {
     return texto
       .trim()
@@ -50,9 +50,13 @@ export default class Auth {
       // envio del correo con la notificcación de registro
       const info = await transporter.sendMail(configMail)
       console.log(`El correo ha sido enviado: ${info.response}`)
-    } catch (error: any) {
-      console.log(error)
-      throw new Error(error)
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log(error.message)
+        throw error
+      } else {
+        throw new Error('An unknown error occurred while sending the email')
+      }
     }
   }
 

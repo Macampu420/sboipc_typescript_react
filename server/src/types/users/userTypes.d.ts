@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { schemaUsuario, schemaRegistroUsuario, schemaInicioSesion } from '../schemas/auth'
+import { schemaUsuario, schemaRegistroUsuario, schemaInicioSesion } from '../../schemas/users/users'
 
 // Tipo para representar el objeto de un usuario completo
 export type Usuario = z.infer<typeof schemaUsuario>;

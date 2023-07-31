@@ -7,7 +7,7 @@ import * as dotenv from 'dotenv'
 import path from 'path'
 
 // Importar las rutas de la aplicacion
-import AuthRouter from './routes/auth.routes'
+import AuthRouter from './routes/users/users.routes'
 
 // configuracion de origenes permitidos para solicitudes al server (app cliente)
 const corsOptions = {

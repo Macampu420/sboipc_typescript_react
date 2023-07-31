@@ -1,3 +1,5 @@
+import { ROLES } from '../consts'
+
 export default function SelectModales ({ modalRegistro }) {
   return (
     <div
@@ -7,9 +9,9 @@ export default function SelectModales ({ modalRegistro }) {
       <label htmlFor="slcRol" className='quicksand'>Rol</label>
       <select className='questrial' name="idRol" id="slcRol">
         <option defaultValue disabled>Selecciona el rol</option>
-        <option value="1">super usuario</option>
-        <option value="2">usuario</option>
-        <option value="3">usuario consulta</option>
+        <option value={ROLES['super usuario']}>super usuario</option>
+        <option value={ROLES.usuario}>usuario</option>
+        <option value={ROLES['usuario consulta']}>usuario consulta</option>
       </select>
     </div>
   )
